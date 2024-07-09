@@ -8,7 +8,13 @@ const bootstrap = async () => {
     const userFlowId = core.getInput('user_flow_id');
     const userFlowType = core.getInput('user_flow_type');
     const userFlowTypeVersion = core.getInput('user_flow_type_version');
+    const logLevel = core.getInput('log_level');
     
+    if(!['error, verbose'].includes(logLevel)){
+        core.setFailed('Invalid log level. Please provide a valid log level: [error, verbose]');
+        return;
+    }
+
     if(!['signInSignUp', 'signIn', 'signUp', 'passwordReset', 'profileUpdate', 'emailVerification'].includes(userFlowType)){
         core.setFailed('Invalid user flow type. Please provide a valid user flow type: [signInSignUp, signIn, signUp, passwordReset, profileUpdate, emailVerification]');
         return;
@@ -33,6 +39,9 @@ const bootstrap = async () => {
         });
     }
     catch(error){
+        if(logLevel == 'verbose'){
+            console.error(error);
+        }
         core.setFailed(`Authentication failed. Please check your credentials and try again: ${error.message}`);
         return;
     }
@@ -58,6 +67,9 @@ const bootstrap = async () => {
     
     }
     catch(error){
+        if(logLevel == 'verbose'){
+            console.error(error);
+        }
         core.setFailed(`Creation of B2C User Flow failed. Please check your id, type, version, and identity providers, and try again: ${error.message}`);
         return;
     }

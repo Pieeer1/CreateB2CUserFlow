@@ -23,6 +23,10 @@ inputs:
     description: 'The version of the user flow to create. Options: [3]'
     required: true
     default: 3
+  log_level:
+    description: 'The log level for the Azure AD B2C API client. Options: [error, verbose]'
+    required: true
+    default: 'error'
 runs:
   using: 'node20'
   main: 'index.js'

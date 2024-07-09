@@ -60,7 +60,7 @@ const bootstrap = async () => {
     }
     catch(error){
         console.log(error); // temp REMOVE
-        if(error.res.statusCode !== 404){
+        if(error.response.status !== 404){
             if(logLevel == 'verbose'){
                 console.error(error);
             }

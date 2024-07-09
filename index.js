@@ -59,7 +59,7 @@ const bootstrap = async () => {
         });
     }
     catch(error){
-        if(error.code !== 'ERR_NOT_FOUND'){
+        if(error.res.statusCode !== 404){
             if(logLevel == 'verbose'){
                 console.error(error);
             }

@@ -59,7 +59,6 @@ const bootstrap = async () => {
         });
     }
     catch(error){
-        console.log(error); // temp REMOVE
         if(error.response.status !== 404){
             if(logLevel == 'verbose'){
                 console.error(error);

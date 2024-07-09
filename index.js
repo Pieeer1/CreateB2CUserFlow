@@ -54,7 +54,7 @@ const bootstrap = async () => {
         userFlowResponse = await axios.post('https://graph.microsoft.com/beta/identity/b2cUserFlows', {
             id: userFlowId,
             userFlowType: userFlowType,
-            userFlowTypeVersion: userFlowTypeVersion,
+            userFlowTypeVersion: parseInt(userFlowTypeVersion),
             identityProviders: [
     
             ]

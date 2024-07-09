@@ -1,0 +1,28 @@
+name: 'Create B2C User Flow'
+description: 'Create a B2C User Flow in Azure AD B2C'
+branding:
+  icon: 'users'
+  color: 'blue'
+inputs:
+  client_id:
+    description: 'The client ID of the Azure AD B2C application registration with application IdentityUserFlow.ReadWrite.All permissions'
+    required: true
+  client_secret:
+    description: 'The client secret of the Azure AD B2C application registration with application IdentityUserFlow.ReadWrite.All permissions'
+    required: true
+  tenant_id:
+    description: 'The tenant ID of the Azure AD B2C Tenant to create the user flow in'
+    required: true
+  user_flow_id:
+    description: 'The ID of the user flow to create. This must be unique within the tenant'
+    required: true
+  user_flow_type:
+    description: 'The type of user flow to create. Options: [signUpOrSignIn, signIn, signUp, passwordReset, profileUpdate, emailVerification]'
+    required: true
+  user_flow_type_version:
+    description: 'The version of the user flow to create. Options: [3]'
+    required: true
+    default: 3
+runs:
+  using: 'node20'
+  main: 'index.js'

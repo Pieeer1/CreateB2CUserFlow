@@ -48,6 +48,31 @@ const bootstrap = async () => {
 
     const accessToken = authResponse.data.access_token;
 
+    const userFlowIdWithPrefix = userFlowId.startsWith('B2C_1_') ? userFlowId : `B2C_1_${userFlowId}`;
+
+    let previouslyExistingUserFlow;
+    try{
+        previouslyExistingUserFlow = await axios.get(`https://graph.microsoft.com/beta/identity/b2cUserFlows/${userFlowIdWithPrefix}`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+    }
+    catch(error){
+        if(error.code !== 'ERR_NOT_FOUND'){
+            if(logLevel == 'verbose'){
+                console.error(error);
+            }
+            core.setFailed(`Check for Previous User Flow failed. Please check the id name and try again: ${error.message}`);
+            return;
+        }
+    }
+
+    if(!!previouslyExistingUserFlow){
+        console.log('User Flow already exists. Skipping creation.');
+        return;
+    }
+
     let userFlowResponse;
 
     try{

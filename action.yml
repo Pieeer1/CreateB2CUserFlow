@@ -17,7 +17,7 @@ inputs:
     description: 'The ID of the user flow to create. This must be unique within the tenant'
     required: true
   user_flow_type:
-    description: 'The type of user flow to create. Options: [signUpOrSignIn, signIn, signUp, passwordReset, profileUpdate, emailVerification]'
+    description: 'The type of user flow to create. Options: [signUp, signIn, signUpOrSignIn, passwordReset, profileUpdate, resourceOwner]'
     required: true
   user_flow_type_version:
     description: 'The version of the user flow to create. Options: [3]'

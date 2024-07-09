@@ -15,8 +15,8 @@ const bootstrap = async () => {
         return;
     }
 
-    if(!['signInSignUp', 'signIn', 'signUp', 'passwordReset', 'profileUpdate', 'emailVerification'].includes(userFlowType)){
-        core.setFailed('Invalid user flow type. Please provide a valid user flow type: [signInSignUp, signIn, signUp, passwordReset, profileUpdate, emailVerification]');
+    if(!['signUp', 'signIn', 'signUpOrSignIn', 'passwordReset', 'profileUpdate', 'resourceOwner'].includes(userFlowType)){
+        core.setFailed('Invalid user flow type. Please provide a valid user flow type: [\'signUp\', \'signIn\', \'signUpOrSignIn\', \'passwordReset\', \'profileUpdate\', \'resourceOwner\']');
         return;
     }
     if(!['3'].includes(userFlowTypeVersion)){

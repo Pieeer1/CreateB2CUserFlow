@@ -9,8 +9,8 @@ const bootstrap = async () => {
     const userFlowType = core.getInput('user_flow_type');
     const userFlowTypeVersion = core.getInput('user_flow_type_version');
 
-    if(!['signUpOrSignIn', 'signIn', 'signUp', 'passwordReset', 'profileUpdate', 'emailVerification'].includes(userFlowType)){
-        core.setFailed('Invalid user flow type. Please provide a valid user flow type: [signUpOrSignIn, signIn, signUp, passwordReset, profileUpdate, emailVerification]');
+    if(!['signInSignUp', 'signIn', 'signUp', 'passwordReset', 'profileUpdate', 'emailVerification'].includes(userFlowType)){
+        core.setFailed('Invalid user flow type. Please provide a valid user flow type: [signInSignUp, signIn, signUp, passwordReset, profileUpdate, emailVerification]');
         return;
     }
     if(![3].includes(userFlowTypeVersion)){

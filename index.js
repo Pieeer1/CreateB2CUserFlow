@@ -10,7 +10,7 @@ const bootstrap = async () => {
     const userFlowTypeVersion = core.getInput('user_flow_type_version');
     const logLevel = core.getInput('log_level');
     
-    if(!['error, verbose'].includes(logLevel)){
+    if(!['error', 'verbose'].includes(logLevel)){
         core.setFailed('Invalid log level. Please provide a valid log level: [error, verbose]');
         return;
     }
